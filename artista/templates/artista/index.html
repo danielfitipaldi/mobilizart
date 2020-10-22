@@ -1,1 +1,71 @@
-<h1>INDEX</h1>
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MOBILIZ.ART.BR</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap" rel="stylesheet">
+    <style> body {
+            font-family: Poppins;
+         }
+    </style>
+
+</head>
+
+{% include 'parcials/_messages.html'%}
+
+<body>
+<div class="header">
+    <div class="opacidade">
+        <div class="menu">
+            <ul class="texto_menu">
+                <li><a href="{% url 'index' %}">INÍCIO</a></li>
+                <li><a href="{% url 'mobilize'%}">MOBILIZE</a></li>
+                <li><a href="{% url 'cadastrar'%}">CADASTRO</a></li>
+                <li><a href="#">CONTATO</a></li>
+            </ul>
+        </div>
+        <div class="logo"></div>
+        <a href="{% url 'index'%}"><img src="static/img/marca.png" class="logo_header"></a>
+
+    </div>
+</div>
+<div class="content">
+    <div class="texto_central">
+        <h1 class = "titulo_central">MOBILIZE</h1>
+        <h2 class="subtitulo_central">CONSTRUA ATIVAMENTE A MAIOR REDE<br> DE AGENTES CULTURAIS
+            DO BRASIL<br>
+            </h2>
+    </div>
+
+
+    <div class="icones">
+        <div class="icone_1">
+            <img src="static/img/mobilize-icon.jpg" class="icone_mobilize"/>
+            <h1>O PROJETO</h1>
+            <p>MOBILIZ.ART.BR é uma plataforma
+                para conectar artistas, grupos culturais,
+                empresários e gestores de eventos.</p>
+
+        </div>
+
+        <div class="icones">
+            <div class="icone_2">
+            <img src="static/img/cadastre-icon.png" class="icone_mobilize"/>
+            <h1>CADASTRE-SE</h1>
+            <p>Receba notificações em seu telefone sobre
+               qualquer pauta cultural que tramite no Congresso nacional.</p>
+
+        </div>
+
+    </div>
+</div>
+    </div>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 
 class Categoria(models.Model):
@@ -10,3 +11,6 @@ class Categoria(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+

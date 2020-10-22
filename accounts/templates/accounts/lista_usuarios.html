@@ -1,0 +1,30 @@
+{% include 'parcials/_messages.html'%}
+
+<table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>CPF</th>
+          <th>E-mail</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for artista in artistas %}
+          <tr>
+            <td> {{ artista.id }}</td>
+            <td>
+              <a href="{% url 'detalhe_artista' artista.id %}"> {{ artista.nome }}</a>
+            </td>
+            <td>{{ artista.sobrenome }}</td>
+            <td>{{ artista.cpf }}</td>
+            <td>{{ artista.email }}</td>
+            <td>{{ artista.categoria }}</td>
+
+          </tr>
+        {%endfor%}
+      </tbody>
+    </table>

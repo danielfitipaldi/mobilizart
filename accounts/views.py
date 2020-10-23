@@ -1,4 +1,5 @@
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
@@ -26,6 +27,11 @@ def login(request):
         auth.login(request, user)
         messages.success(request, 'Você está logado')
         return redirect('dash_accounts')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
 
 
 def cadastro_accounts(request):
@@ -77,10 +83,12 @@ def cadastro_accounts(request):
     return redirect('login')
 
 
+@login_required(redirect_field_name='login', login_url='login')
 def dash_accounts(request):
     return render(request, 'accounts/dash_accounts.html')
 
 
+@login_required(redirect_field_name='login', login_url='login')
 def nova_categoria(request):
     form = FormCategoria(request.POST)
 
@@ -97,6 +105,7 @@ def nova_categoria(request):
     return render(request, 'accounts/nova_categoria.html', {'form': form})
 
 
+@login_required(redirect_field_name='login', login_url='login')
 def listar(request):
     artistas = Artista.objects.all()
 
@@ -105,6 +114,7 @@ def listar(request):
     })
 
 
+@login_required(redirect_field_name='login', login_url='login')
 def detalhe_artista(request, artista_id):
     artista = get_object_or_404(Artista, id=artista_id)
 
@@ -113,13 +123,29 @@ def detalhe_artista(request, artista_id):
     })
 
 
+@login_required(redirect_field_name='login', login_url='login')
 def editar(request, artista_id):
     contexto = {}
     obj = get_object_or_404(Artista, id=artista_id)
 
+    email = request.POST.get('email')
+    cpf = request.POST.get('cpf')
+
     form = FormArtista(request.POST or None, instance=obj)
 
     if form.is_valid():
+        try:
+            validate_email(email)
+        except:
+            messages.error(request, 'E-mail inválido')
+            form = FormArtista()
+            return render(request, 'accounts/edicao_artista.html', {'form': form})
+
+        if len(cpf) > 11:
+            messages.error(request, 'CPF inválido')
+            form = FormArtista()
+            return render(request, 'artista/pag_cadastro.html', {'form': form})
+
         form.save()
         messages.success(request, 'Cadastro atualizado')
         return HttpResponseRedirect('/accounts/lista')
@@ -129,8 +155,8 @@ def editar(request, artista_id):
     return render(request, "accounts/edicao_artista.html", contexto)
 
 
+@login_required(redirect_field_name='login', login_url='login')
 def deletar_artista(request, artista_id):
-    contexto = {}
     artista = get_object_or_404(Artista, id=artista_id)
 
     if request.method == "GET":

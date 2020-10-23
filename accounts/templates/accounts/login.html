@@ -1,9 +1,31 @@
+{% extends 'base.html' %}
 
+{% block content %}
+<div class="titulo"> LOGIN </div>
 
-{% include 'parcials/_messages.html' %}
+{% if not user.is_authenticated %}
 
+<div class="container" >
+    <form method="POST" action="{% url 'login' %}" >
+        {% include 'parcials/_messages.html' %}
+        {% csrf_token %}
+      <div class="form-group" >
+        <label>Usuário</label>
+        <input type="text" name="usuario" value="{{ request.POST.usuario }}"  class="form-control" style="width:225px">
+       </div>
+     <div class="form-group">
+        <label>Senha</label>
+        <input type="password" name="senha" class="form-control" style="width:225px">
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-bottom:10px">Entrar</button>
+    </form>
+</div>
+{% else %}
+<p>
+    Você fez login com {{user}},
+    <a href="{% url 'logout'%}">Clique aqui</a> para sair ou aqui para ir para sua
+    <a href="{% url 'dash_accounts'%}">dashboard</a>
+</p>
+{% endif %}
 
-<h1>INDEX DAS ACCOUNTS</h1>
-
-<h2>Página de Login</h2>
-
+{% endblock %}

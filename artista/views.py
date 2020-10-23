@@ -24,11 +24,17 @@ def cadastrar(request):
     form = FormArtista(request.POST)
 
     email = request.POST.get('email')
+    cpf = request.POST.get('cpf')
 
     try:
         validate_email(email)
     except:
         messages.error(request, 'E-mail inválido')
+        form = FormArtista()
+        return render(request, 'artista/pag_cadastro.html', {'form': form})
+
+    if len(cpf) > 11:
+        messages.error(request, 'CPF inválido')
         form = FormArtista()
         return render(request, 'artista/pag_cadastro.html', {'form': form})
 

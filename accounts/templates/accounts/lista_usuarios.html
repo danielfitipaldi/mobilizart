@@ -1,3 +1,6 @@
+{% extends 'base.html'%}
+
+{%block content%}
 {% include 'parcials/_messages.html'%}
 
 <table class="table">
@@ -17,9 +20,11 @@
           <tr>
             <td> {{ artista.id }}</td>
             <td>
-              <a href="{% url 'detalhe_artista' artista.id %}"> {{ artista.nome }}</a>
+              <a href="{% url 'detalhe_artista' artista.id %}"> {{ artista.nome }} </a>
             </td>
-            <td>{{ artista.sobrenome }}</td>
+           <td>
+              <a href="{% url 'detalhe_artista' artista.id %}"> {{ artista.sobrenome }} </a>
+            </td>
             <td>{{ artista.cpf }}</td>
             <td>{{ artista.email }}</td>
             <td>{{ artista.categoria }}</td>
@@ -28,3 +33,4 @@
         {%endfor%}
       </tbody>
     </table>
+{%endblock%}

@@ -1,15 +1,25 @@
-<h1>Edição de artista cadastrado </h1>
+{% extends 'base.html'%}
 
-<div class="main">
+{%block content%}
+<div class="titulo">EDIÇÃO DE ARTISTA CADASTRADO </div>
+<br><br>
+<div class="container">
     <!-- Create a Form -->
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <!-- Security token by Django -->
         {% csrf_token %}
-
+    <table class="table">
         <!-- form as paragraph -->
         {{ form.as_p }}
-
+        <tr>
+            <td colspan="2">
+            <br>
         <input type="submit" value="Update">
+        </td>
+            </tr>
+        </table>
     </form>
-
 </div>
+
+
+{%endblock%}

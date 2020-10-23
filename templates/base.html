@@ -1,14 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="pt">
-<head>
+<html lang="en">
 
-    <title>{%block title%} {%endblock%}</title>
-    {% include 'parcials/_head.html'%}
+{% include 'parcials/_head.html' %}
 
-</head>
-<body>
-<div class="container-fluid">
-  {%block content%} {%endblock%}
-</div>
-</body>
+<div class="titulo"> </div>
+
+{% include 'parcials/_nav.html'%}
+
+{%block content%}
+{%endblock%}
+
+{% include 'parcials/_footer.html'%}
+
 </html>

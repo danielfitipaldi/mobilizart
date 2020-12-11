@@ -100,6 +100,9 @@ class Artista(models.Model):
         blank=True
     )
 
+    foto = models.ImageField(
+        blank=True, upload_to='fotos/%Y/%m/%d')
+
     def __str__(self):
         return f'{self.nome} {self.sobrenome}'
 

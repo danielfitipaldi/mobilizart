@@ -21,7 +21,7 @@ def cadastrar(request):
         form = FormArtista()
         return render(request, 'artista/pag_cadastro.html', {'form': form})
 
-    form = FormArtista(request.POST)
+    form = FormArtista(request.POST, request.FILES)
 
     email = request.POST.get('email')
     cpf = request.POST.get('cpf')
@@ -33,7 +33,7 @@ def cadastrar(request):
         form = FormArtista()
         return render(request, 'artista/pag_cadastro.html', {'form': form})
 
-    if len(cpf) > 11:
+    if len(cpf) != 11:
         messages.error(request, 'CPF inválido')
         form = FormArtista()
         return render(request, 'artista/pag_cadastro.html', {'form': form})

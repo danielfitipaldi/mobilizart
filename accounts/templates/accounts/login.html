@@ -21,11 +21,13 @@
     </form>
 </div>
 {% else %}
-<p>
-    Você fez login com {{user}},
-    <a href="{% url 'logout'%}">Clique aqui</a> para sair ou aqui para ir para sua
-    <a href="{% url 'dash_accounts'%}">dashboard</a>
-</p>
+
+<div class="titulo">
+    {% include 'parcials/_messages.html' %}
+    <p>Você fez login com {{user}},<br></p>
+    <p><a href="{% url 'logout'%}">Clique aqui</a> para sair ou aqui para ir para sua</p>
+    <p></p><a href="{% url 'dash_accounts'%}">dashboard</a> <br> <br></div>
+</div>
 {% endif %}
 
 {% endblock %}

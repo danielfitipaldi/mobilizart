@@ -1,6 +1,7 @@
 from django.contrib import auth, messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.validators import validate_email
@@ -25,7 +26,7 @@ def login(request):
         return render(request, 'accounts/login.html')
     else:
         auth.login(request, user)
-        messages.success(request, 'Você está logado')
+        messages.success(request, f'Você está logado como {user}')
         return redirect('dash_accounts')
 
 
@@ -77,13 +78,13 @@ def cadastro_accounts(request):
 
     messages.success(request, 'Registrado com sucesso. Agora faça o login para entrar')
     user = User.objects.create_user(username=usuario, email=email, password=senha,
-                                    first_name=nome, last_name=sobrenome)
+                                    first_name=nome, last_name=sobrenome, is_superuser=True)
 
     user.save()
     return redirect('login')
 
 
-@login_required(redirect_field_name='login', login_url='login')
+@user_passes_test(lambda user: user.is_superuser, redirect_field_name='login', login_url='login')
 def dash_accounts(request):
     return render(request, 'accounts/dash_accounts.html')
 
@@ -107,7 +108,13 @@ def nova_categoria(request):
 
 @login_required(redirect_field_name='login', login_url='login')
 def listar(request):
-    artistas = Artista.objects.all()
+    artistas = Artista.objects.order_by('-id')
+
+    paginator = Paginator(artistas, 11)
+
+    page = request.GET.get('page')
+
+    artistas = paginator.get_page(page)
 
     return render(request, 'accounts/lista_usuarios.html', {
         'artistas': artistas
@@ -125,15 +132,27 @@ def detalhe_artista(request, artista_id):
 
 @login_required(redirect_field_name='login', login_url='login')
 def editar(request, artista_id):
-    contexto = {}
     obj = get_object_or_404(Artista, id=artista_id)
 
     email = request.POST.get('email')
     cpf = request.POST.get('cpf')
+    senha = request.POST.get('senha')
+    senha2 = request.POST.get('senha2')
 
     form = FormArtista(request.POST or None, instance=obj)
 
     if form.is_valid():
+
+        if senha != senha2:
+            messages.error(request, 'Senhas não coincidem')
+            form = FormArtista()
+            return render(request, 'accounts/edicao_artista.html', {'form': form})
+
+        if len(cpf) != 11:
+            messages.error(request, 'CPF inválido')
+            form = FormArtista()
+            return render(request, 'accounts/edicao_artista.html', {'form': form})
+
         try:
             validate_email(email)
         except:
@@ -141,18 +160,11 @@ def editar(request, artista_id):
             form = FormArtista()
             return render(request, 'accounts/edicao_artista.html', {'form': form})
 
-        if len(cpf) > 11:
-            messages.error(request, 'CPF inválido')
-            form = FormArtista()
-            return render(request, 'artista/pag_cadastro.html', {'form': form})
-
         form.save()
         messages.success(request, 'Cadastro atualizado')
         return HttpResponseRedirect('/accounts/lista')
 
-    contexto["form"] = form
-
-    return render(request, "accounts/edicao_artista.html", contexto)
+    return render(request, "accounts/edicao_artista.html", {'form': form})
 
 
 @login_required(redirect_field_name='login', login_url='login')

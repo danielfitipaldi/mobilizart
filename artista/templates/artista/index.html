@@ -1,7 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
 
-
 {% include 'parcials/_messages.html'%}
 
 {% block content %}
@@ -11,34 +10,68 @@
         <h1 class = "titulo_central">MOBILIZE</h1>
         <h2 class="subtitulo_central">CONSTRUA ATIVAMENTE A MAIOR REDE<br> DE AGENTES CULTURAIS
             DO BRASIL<br>
-            </h2>
+        </h2>
+        <br><br>
     </div>
-
 
     <div class="icones">
         <div class="icone_1">
-            <img src="static/img/mobilize-icon.jpg" class="icone_mobilize"/>
+            <img src="static/img/mobiliz.png" class="icone_mobilize"/>
             <h1><a href="{% url 'mobilize' %}" style="text-decoration:none">O PROJETO</a></h1>
-            <p>MOBILIZ.ART.BR é uma plataforma
-                para conectar artistas, grupos culturais,
-                empresários e gestores de eventos.</p>
+            <h5>MOBILIZ.ART.BR é uma plataforma
+                para conectar artistas, grupos culturais, empresários e gestores.</h5>
 
         </div>
 
         <div class="icones">
             <div class="icone_2">
-            <img src="static/img/cadastre-icon.png" class="icone_mobilize"/>
-            <h1><a href="{% url 'cadastrar' %}" style="text-decoration:none">CADASTRE-SE</a></h1>
-            <p>Receba notificações em seu telefone sobre
-               qualquer pauta cultural que tramite no Congresso nacional.</p>
+                <img src="static/img/cadastre-icon.png" class="icone_mobilize"/>
+                <h1><a href="{% url 'cadastrar' %}" style="text-decoration:none">CADASTRE-SE</a></h1>
+                <h5>Receba notificações em seu telefone sobre
+                    pautas culturais que tramitem no Congresso Nacional.</h5>
+
+            </div>
 
         </div>
-
     </div>
 </div>
+
+<div class="content_home2">
+    <div class="texto_central">
+        <h1 class = "texto_home"><strong>CINE DOC</strong><br>
+            <h3><strong>Filmes semanais sobre a história da mobilização social e cultural no Brasil</strong></h3></h1><br>
+        <iframe width="600" height="400" src="https://www.youtube.com/embed/EVKHJIv-A28" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br><br><br><br>
     </div>
-</body>
 
-</html>
+    <div class="content_QUEMSOMOS">
+        <div class="texto_centralquemsomos"><br><br>
+            <h1 class = "titulo_quemsomos">DESENVOLVIMENTO</h1>
 
-{% endblock %}
+            <br><br>
+            <div class="icones">
+        <div class="icone_1">
+            <img src="static/img/andre.png" class="icone_mobilize"/>
+            <h2><a href="https://github.com/andreraboni" style="text-decoration:none" target="_blank">ANDRÉ RABONI</a></h2>
+            <h5 class="titulo_quemsomos2">SOCIAL MEDIA ANALYTICS | GRADUANDO EM ANÁLISE E DESEVNOLVIMENTO DE SISTEMAS</h5>
+        </div>
+
+        <div class="icones">
+            <div class="icone_2">
+                <img src="static/img/daniel.png" class="icone_mobilize"/>
+                <h2><a href="https://github.com/danielfitipaldi" style="text-decoration:none" target="_blank">DANIEL FITIPALDI</a></h2>
+                 <h5 class="titulo_quemsomos2">JORNALISTA | GRADUANDO EM ANÁLISE E DESEVNOLVIMENTO DE SISTEMAS</h5>
+            </div>
+
+        </div>
+    </div>
+        </div>
+</div>
+
+    </body>
+
+    </html>
+
+    {% endblock %}
+
+</div>

@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.12.1/jquery-ui.theme.min.css' %}" rel="stylesheet">
+
+
 {% include 'parcials/_head.html' %}
 
 <div class="titulo"> </div>
@@ -12,6 +17,11 @@
 {%block content%}
 {%endblock%}
 
-{% include 'parcials/_footer.html'%}
 
+
+<script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.12.1/jquery-ui.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+{% include 'parcials/_footer.html'%}
 </html>

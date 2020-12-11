@@ -1,0 +1,298 @@
+André
+/*
+ABRINDO FOLHA DE ESTILIZAÇÃO PARA 
+MOBILIZ.ART
+
+*/
+
+/*
+CABEÇALHO E HEADER
+
+*/
+.header{
+    width: 100%;
+    height: 600px;
+    background-image: url('/static/img/header.png');
+    background-size: 100% 100%;
+    margin-top: -20px;
+
+}
+
+#imagem {
+    background-image: url('/static/img/header.png');
+    width:100%;
+
+}
+
+/*
+Aqui começa a estilização de MENU E LOGOMARCA
+*/
+
+.opacidade{
+    position: fixed;
+    width:100%;
+    height:55px;
+    background-color: black;
+    margin-top: 0px;
+}
+
+.titulo{
+    padding-left: 230px;
+    padding-top: 20px;
+    padding-right: 230px;
+    color: black;
+    font-size: 32px;
+}
+
+.logo{
+    width: 10%;
+    float: left;
+}
+
+.logo_header{
+    width: 12%;
+    float: left;
+    padding-left: 30px;
+    padding-top: 15px;
+    position: fixed;
+
+}
+
+.menu{
+    width: 85%;
+    float: right;
+}
+
+.texto_menu{
+    float: right;
+    color: white;
+    padding-top: 5px;
+    padding-right: 80px;
+    font-family: 'Poppins' bold;
+    font-size: 15px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  padding-left: 650px;
+  margin-top: 6px;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    display: inline;
+    float: left;
+}
+
+li a{
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.texto_header{
+    color: black;
+
+}
+
+/*
+Aqui começam as estilizações dos textos do Body e Divs centrais da home e das páginas internas
+*/
+
+.texto_esquerdo{
+    color: Firebrick;
+    text-align: left;
+    padding-top: 250px;
+    padding-left: 30px;
+    font-style: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content{
+    background-image: url('/static/img/bgbody.png');
+    width:100%;
+    height:650px;
+    background-size: 100%;
+    margin-top: -50px;
+ }
+
+.content_interno{
+    background-image: url('/static/img/bg3.jpg');
+    width:100%;
+    height:650px;
+    background-size: 100%;
+    margin-top: -50px;
+}
+
+.content_interno2{
+    background-image: url('/static/img/bg3.jpg');
+    width:100%;
+    height:950px;
+    background-size: 100%;
+    margin-top: -110px;
+}
+
+.content_home2{
+    background-image: url('/static/img/bgblue.jpg');
+    width:100%;
+    height: 750px;
+    background-size: 100%;
+    margin-top: -20px;
+}
+
+.content_QUEMSOMOS{
+    background-image: url('/static/img/bgquemsomos.jpg');
+    width:100%;
+    height: 600px;
+    background-size: 100%;
+    margin-top: 0px;
+
+}
+
+.titulo_quemsomos{
+    color: black;
+    text-align: center;
+    font-family: Cursive bold;
+    font-weight: 900;
+    padding-top: 10px;
+    font-size: 40;
+}
+
+.texto_centralquemsomos{
+    color: black;
+    text-align: center;
+    font-family: Lucida Handwriting;
+    font-weight: 900;
+    padding-top: 10px;
+    font-size: 60;
+}
+
+.titulo_quemsomos2{
+    color: black;
+    text-align: center;
+    font-family: verdana;
+    font-weight: 500;
+    padding-top: 10px;
+    font-size: 60;
+}
+
+.texto_central{
+
+ }
+
+ .titulo_central{
+    color: black;
+    text-align: center;
+    font-family: 'Poppins' bold;
+    padding-top: 100px;
+    font-size: 36;
+ }
+
+ .subtitulo_central{
+    color: black;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 24;
+ }
+
+.subtitulo_home{
+    color: black;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 12;
+}
+
+.content_home2{
+
+}
+
+.texto_central{
+    color: white;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 12;
+    padding-top: 20px;
+}
+
+.icones{
+    width: 1000px;
+    margin: auto;
+}
+
+.icone_1{
+    width: 33.3%;
+    float: left;
+    text-align: center;
+}
+
+.icone_2{
+    width: 33.3%;
+    float: right;
+    text-align: center;
+}
+
+
+.rodape {
+    width:100%;
+    height:80px;
+    background: rgba(17, 30, 127, 255);
+}
+
+.opacidade_rodape{
+    width:100%;
+    height:80px;
+    background-color: black;
+}
+
+.rodape_texto{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 3px;
+}
+
+.email_texto{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+.logo_rodape{
+    width: 12%;
+    float: left;
+    padding-left: 30px;
+    padding-top: 15px;
+}
+
+.texto_footer{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    text-align: left;
+    padding-top: 30px;
+    padding-left: 20px;
+
+}
+
+.subtitulo_mobilizar{
+    color: black;
+    font-size: 18px;
+    font-family: 'Poppins' bold;
+}
+
+.body{
+  padding-top: 0px;
+  padding-right: 400px;
+  padding-bottom: 0px;
+  padding-left: 400px;
+  margin: 0px;
+}
